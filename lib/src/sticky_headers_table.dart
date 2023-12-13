@@ -211,10 +211,11 @@ class _StickyHeadersTableState extends State<StickyHeadersTable> {
     );
     SchedulerBinding.instance.addPostFrameCallback((_) => _shiftUsingOffsets());
     return Column(
-      children: <Widget>[
+      mainAxisSize: MainAxisSize.min,
+      children: [
         Row(
           textDirection: widget.tableDirection,
-          children: <Widget>[
+          children: [
             /// STICKY LEGEND
             GestureDetector(
               behavior: HitTestBehavior.opaque,
@@ -228,7 +229,7 @@ class _StickyHeadersTableState extends State<StickyHeadersTable> {
             ),
 
             /// STICKY ROW
-            Expanded(
+            Flexible(
               child: NotificationListener<ScrollNotification>(
                 child: ScrollConfiguration(
                   behavior: ScrollConfiguration.of(context).copyWith(scrollbars: widget.showVerticalScrollbar ?? false),
@@ -272,11 +273,11 @@ class _StickyHeadersTableState extends State<StickyHeadersTable> {
             )
           ],
         ),
-        Expanded(
+        Flexible(
           child: Row(
             crossAxisAlignment: CrossAxisAlignment.start,
             textDirection: widget.tableDirection,
-            children: <Widget>[
+            children: [
               /// STICKY COLUMN
               NotificationListener<ScrollNotification>(
                 child: ScrollConfiguration(
